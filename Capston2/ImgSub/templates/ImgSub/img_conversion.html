@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}img_conversion.html{% endblock %}
+
+
+{% block content %}
+<h2>합성할 배경 업로드</h2>
+<hr>
+<br><br>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form2.as_p }}
+    <hr>
+    <button type="submit" class="btn btn-info">배경합성</button>
+</form>
+{% endblock %}

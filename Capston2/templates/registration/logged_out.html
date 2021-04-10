@@ -1,0 +1,24 @@
+<!-- 로그아웃 처리가 성공한 후 보여지는 화면 -->
+{% extends "base.html" %}
+
+{% block title %}logged_out.html{% endblock %}
+
+{% block content %}
+
+    <h1>로그아웃</h1>
+    <br>
+
+    <div>
+        <i class="fas fa-quote-left"></i>
+        <span class="h6">&ensp;웹사이트를 방문해주셔서 감사합니다&ensp;</span>
+        <i class="fas fa-quote-right"></i>
+    </div>
+
+    <br>
+    <p class="font-weight-bold">
+        <a href="{% url 'login' %}">
+            <input type="button" value="재 로그인" class="btn btn-info">
+        </a>
+    </p>
+
+{% endblock %}

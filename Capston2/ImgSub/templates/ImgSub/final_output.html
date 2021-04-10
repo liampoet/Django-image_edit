@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}final_output.html{% endblock %}
+
+
+{% block content %}
+<ul>
+    <li>
+        <img src="{% static 'final/result2020-11-0913_51_06_902472.png' %}">
+    </li>
+    <li>
+        <a href="{% static 'final/result2020-11-0913_51_06_902472.png' %}" class="btn btn-info" download="">다운로드</a> 
+    </li>
+</ul>
+{% endblock %}

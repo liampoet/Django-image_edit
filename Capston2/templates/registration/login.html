@@ -1,0 +1,46 @@
+<!-- 로그인 화면 -->
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+
+
+{% block title %}login.html{% endblock %}
+
+{% block content %}
+    <!-- 로그인 폼 -->
+    <h1>로그인</h1>
+    <p class="font-weight-bold">ID와 비밀번호를 입력하세요</p>
+
+    {% if form.errors %}
+    <div class="alert alert-danger"> <!-- 배경을 빨간색으로 -->
+        <div class="font-weight-bold">폼 양식을 전부 작성해 주세요</div>
+        {{ form.errors }}
+    </div>
+    {% endif %}
+
+    <form action="." method="post" class="card pt-3"> {% csrf_token %}
+
+        <div class="form-group row">
+            {{ form.username|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
+            <div class="col-sm-5">
+                {{ form.username|add_class:"form-control"|attr:"autofocus" }} <!-- 로그인 뷰에서 넘겨주는 form 객체의 username 필드 -->
+            </div>
+        </div>
+
+        <div class="form-group row">
+            {{ form.password|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }} <!-- add_label_class = widget-tweaks에서 제공, 폼에 부트스트랩 명령어 적용 -->
+            <div class="col-sm-5">
+                {{ form.password|add_class:"form-control" }} <!-- 로그인 뷰에서 넘겨주는 form 객체의 password 필드 -->
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="offset-sm-2 col-sm-5">
+                <input type="submit" value="로그인" class="btn btn-info"/>
+                <input type="hidden" name="next" value="{{ next }}" /> <!-- 로그인이 성공한 경우에 next 변수에 지정된 url로 이동시킴 hidden이므로 화면에 보이지 않음 -->
+            </div>
+        </div>
+
+    </form>
+
+{% endblock %}

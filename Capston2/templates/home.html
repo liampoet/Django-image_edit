@@ -1,0 +1,49 @@
+<!-- base.html에서 상속 -->
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}home.html{% endblock %}
+
+{% block extra-style %}
+<style type="text/css">
+  .home-image {
+    background-color: black;
+    background-image: url("{% static 'img/main.png' %}");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    height: 700px;
+  }
+  .powered {
+    position: relative;
+    top: 90%;
+    color: #cc0;
+    font-weight: bold;
+  }
+</style>
+{% endblock %}
+
+
+{% block content %}
+  <div class="home-image"></div>
+
+  <hr style="margin: 10px 0;">
+  <div style="text-align: center;">
+    <div>
+      <h3 style="text-align: center;">객체 추출 웹사이트</h3>
+      <form style="text-align: center;">{% csrf_token %}
+        <a href="{% url 'description' %}">
+          <input type="button" value="자세히 알아보기">
+        </a> 
+      </form> 
+    </div>
+  </div>
+
+{% endblock content %}
+
+{% block footer %}
+<footer class="fixed-bottom bg-dark">
+  <div class="text-white font-weight-bold text-right mr-4">Copyright &copy; 2020-2 Capston Design2</div>
+</footer>
+{% endblock %}

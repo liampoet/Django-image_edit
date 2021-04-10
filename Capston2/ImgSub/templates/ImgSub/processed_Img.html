@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}processed_Img.html{% endblock %}
+
+
+{% block content %}
+    <h2>편집된 이미지</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>원본 이미지</th>
+                <th>편집 이미지</th>
+                <th>다운로드</th>
+                <th>배경 합성하기</th>                          
+            </tr>
+        </thead> 
+        <tbody>
+            {% for t in proImg %}
+                <tr>
+                    <td>
+                        <img src="{{ t.img.url }}" style="width: 180px;">
+                    </td>
+            {% endfor %}
+                    <td>
+                        <img src="{% static 'test/result2020-11-0618_10_57_908271.png' %}" style="width: 180px;">
+                    </td>
+                    <td>
+                        <a href="{% static 'test/result2020-11-0618_10_57_908271.png' %}" class="btn btn-info" download="">다운로드</a> 
+                    </td>        
+                    <td>
+                        <a href="{% url 'blog:conversion_upload' %}" class="btn btn-info">배경합성</a> 
+                    </td>
+                </tr> 
+
+        </tbody> 
+    </table>
+{% endblock %}

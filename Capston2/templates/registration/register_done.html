@@ -1,0 +1,20 @@
+<!-- 회원가입이 성공한 후 보여주는 화면 -->
+
+{% extends "base.html" %}
+
+{% block title %}register_done.html{% endblock %}
+
+{% block content %}
+
+    <h1>회원가입이 성공적으로 처리되었습니다</h1>
+    <br>
+
+    <p>웹사이트에 오신걸 환영합니다</p>
+
+    <p class="font-weight-bold">
+        <a href="{% url 'login' %}">
+            <input type="button" value="로그인" class="btn btn-info">
+        </a>
+    </p>  <!-- login url로 -->
+
+{% endblock %}

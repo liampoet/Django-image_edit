@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}img_upload.html{% endblock %}
+
+
+{% block content %}
+<h2>이미지 업로드하기</h2>
+<hr>
+<br><br>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.img }}
+    <hr>
+    <button type="submit" class="btn btn-info">사진 업로드</button>
+</form>
+{% endblock %}

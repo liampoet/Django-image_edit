@@ -1,0 +1,52 @@
+<!-- 사용자 계정 생성(회원가입)화면 -->
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+
+
+{% block title %}register.html{% endblock %}
+
+{% block content %}
+
+    <h1>새로운 유저 회원가입</h1>
+    <p>사용하실 이름과 비밀번호를 입력해주세요</p>
+
+    {% if form.errors %}
+    <div class="alert alert-danger">
+        <div class="font-weight-bold">폼 양식을 전부 작성해 주세요</div>
+        {{ form.errors }}
+    </div>
+    {% endif %}
+
+    <form action="." method="post" class="card pt-3"> {% csrf_token %}
+
+        <div class="form-group row">
+            {{ form.username|add_label_class:"col-form-label col-sm-3 ml-3 font-weight-bold" }}
+            <div class="col-sm-5">
+                {{ form.username|add_class:"form-control"|attr:"autofocus" }} <!-- 로그인 뷰에서 넘겨주는 form 객체의 username 필드 -->
+            </div>
+        </div>
+
+        <div class="form-group row">
+            {{ form.password1|add_label_class:"col-form-label col-sm-3 ml-3 font-weight-bold" }} <!-- add_label_class = widget-tweaks에서 제공, 폼에 부트스트랩 명령어 적용 -->
+            <div class="col-sm-5">
+                {{ form.password1|add_class:"form-control" }} <!-- 로그인 뷰에서 넘겨주는 form 객체의 password 필드 -->
+            </div>
+        </div>
+
+        <div class="form-group row">
+            {{ form.password2|add_label_class:"col-form-label col-sm-3 ml-3 font-weight-bold" }} 
+            <div class="col-sm-5">
+                {{ form.password2|add_class:"form-control" }} 
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="offset-sm-3 col-sm-5">
+                <input type="submit" value="회원가입" class="btn btn-info"/>
+            </div>
+        </div>
+
+    </form>
+
+{% endblock %}
